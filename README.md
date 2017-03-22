@@ -8,9 +8,12 @@ Descripción:
 
 Instrucciones para ejecutar el stand:
  * Abrir index.html en un navegador web.
+ * Abrir la carpeta "resultados" en un navegador de archivos.
 
 Requiere:
  * Navegador web Firefox en Ubuntu. Chromium no funciona.
+ * Reproductor de video (VLC funciona. El programa por defecto de Ubuntu también, aunque no es tan lindo).
+  - Configurarlo para que loopée.
  * No hace falta conexión a internet.
 
 Instrucciones de uso:
@@ -18,6 +21,7 @@ Instrucciones de uso:
  * Los parámetros  y  pueden modificarse arrastrando el slider correspondiente en la pantalla.
  * La simulación se puede pausar con 'P' o haciendo click en 'Pause'.
  * La simulación se puede reiniciar con 'Q' o haciendo click en 'Reset'.
+ * Para las explicaciones, utilizar las imágenes y los videos en la carpeta "resultados".
 
 Links:
  * [Repositorio](https://git.exactas.uba.ar/extension-dc/stand-zombis/)

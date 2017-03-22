@@ -1,0 +1,17 @@
+=0, =1, s/d=2000
+
+Con =0 (Todo enfrentamiento Humano-Zombi termina en el humano siendo convertido a zombi), La covertura es casi total.
+Sin importar el mapa, ni el punto inicial, las únicas zonas que no se cumbren son las inalcanzables.
+Al ir aumentando el , la covertura disminuye levemente.
+Con =0.4 ya se ve otro patrón de propagación (se propaga hacia las zonas más pobladas, ya no como una circunferencia),
+aunque la covertura sigue siendo casi total independientemente del punto inicial.
+Con =0.5 la propagación se detiene en seguida (probar varios puntos en el mapa).
+
+Archivos:
+  1-CF.png: Resultado a partir de situar un Zombi en Capital, con =0, =0.1 y =0.2
+  2-0.30.png: Resultado con =0.3, situando un Zombi en Capital, Córdoba y Rosario.
+  3-0.40.png: ídem con =0.4.
+  3-0.40.mp4: Progreso del resultado anterior.
+  4-0.43.png: ídem con =0.43.
+  4-0.43.mp4: Progreso del resultado anterior.
+  5-0.47.png: ídem con =0.47.
