@@ -240,7 +240,7 @@ ZombiesUI.prototype = {
             this.ctx.fillStyle='rgba(255,255,255,0.8)';
             var txt = "Time since infection: "+toFixed(this.sim.time*1.0/(this.sim.beta*this.sim.Nfact), 4)+" hours";
             var size = this.ctx.measureText(txt).width;
-            this.ctx.fillText(txt, this.canvas.width/2 - size/2, this.canvas.height-25);
+            this.ctx.fillText(txt, this.canvas.width/2 - size/2, this.canvas.height-15);
 
             //txt = "FPS: "+toFixed(this.sim.fps, 1);
             //this.ctx.fillText(txt, this.canvas.width/2 - size/2, 80);

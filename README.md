@@ -7,6 +7,7 @@ Descripción:
  * Modificado para incluír mapas de Argentina, Buenos Aires y Capital Federal.
 
 Instrucciones para ejecutar el stand:
+ * (opcional) modificar la variable EVENT (en event.js) según el evento actual.
  * Abrir index.html en un navegador web.
  * Abrir la carpeta "resultados" en un navegador de archivos.
 
