@@ -4,7 +4,7 @@ Stand Zombis
 Descripción:
  * Simulador de propagación de plagas/enfermedades en el espacio utilizando ecuaciones diferenciales.
  * Software original desarrollado por Alex Alemi y Matt Bierbaum.
- * Modificado para incluír mapas de Argentina, Buenos Aires y Capital Federal.
+ * Modificado para incluír mapas de Argentina, Buenos Aires, el Conurbano y Capital Federal.
 
 Instrucciones para ejecutar el stand:
  * (opcional) modificar la variable EVENT (en event.js) según el evento actual.

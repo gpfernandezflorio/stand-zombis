@@ -1,5 +1,5 @@
 var helptext = "\
-Welcome to Zombietown Capital Federal, a disease dynamics simulation of zombism across Capital Federal. \
+Welcome to Zombietown Conurbano, a disease dynamics simulation of zombism across Conurbano. \
 We use Gillespie dynamics on block-level census data from 2010 using 308 \
 million people interacting across the continental US.\n\n\
 Parameters:\n\n\
@@ -33,7 +33,7 @@ function ZombiesUI() {
     this.uielem = [];
     this.showcontrols = true;
     this.play = true;
-    this.stepsper = 500;
+    this.stepsper = 2000;
     this.keys = {};
 }
 
@@ -47,11 +47,11 @@ ZombiesUI.prototype = {
         loadGrid('dat/js-grid-cp.json', this.bind(function (dat) {
             this.usboard = new simulation.USAMapBoard(dat);
             this.sim = new simulation.Simulation(this.usboard);
-            this.sim.alpha = 0.8;
+            this.sim.alpha = 0.0;
 
-            this.escapetime = 11; //hours to escape a cell
+            this.escapetime = 1; //hours to escape a cell
             this.sim.beta = 3.6e-3/2;
-            this.sim.Nfact = 500;
+            this.sim.Nfact = 2000;
             this.sim.mu = 1.0/(this.escapetime*this.sim.beta*this.sim.Nfact);
 
             this.init_gui();
@@ -156,7 +156,7 @@ ZombiesUI.prototype = {
         var textbox = new TextBox(left+10, topp+180, width-10, height-topp-160, helptext, this.ctx);
 
         this.slider_alpha.value = this.sim.alpha;
-        this.slider_mu.value = 11;
+        this.slider_mu.value = 1;
         this.slider_steps.value = this.stepsper;
 
         this.uielem = []
