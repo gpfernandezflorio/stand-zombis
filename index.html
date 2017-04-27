@@ -2,26 +2,40 @@
     <head>
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
         <meta content="utf-8" http-equiv="encoding">
-        <title>Zombie-town</title>
+        <title>Apocalipsis Zombi</title>
         <style>
+            #link {
+                text-shadow:
+                -1px -1px 0 #fff,
+                1px -1px 0 #fff,
+                1px 1px 0 #fff,
+                1px 1px 0 #fff;
+            }
             #event {
+                font-family: Sans-Serif;
                 position: absolute;
                 bottom: 10px;
                 right: 20px;
                 color: #000;
+                text-shadow:
+                -1px -1px 0 #fff,
+                1px -1px 0 #fff,
+                1px 1px 0 #fff,
+                1px 1px 0 #fff;
             }
         </style>
     </head>
 
-    <body>
+    <body style="background: url(bg.jpg) no-repeat;  background-size: cover; background-attachment: fixed;">
         <div id='main'>
-          <div><font size="10">Seleccione un Mapa</font></div>
-          <div>> <a href='index-usa.html'><font size="6">USA</font></a></div>
-          <div>> <a href='index-ar.html'><font size="6">Argentina</font></a></div>
-          <div>> <a href='index-ba.html'><font size="6">Buenos Aires</font></a></div>
-          <div>> <a href='index-cp.html'><font size="6">Conurbano</font></a></div>
-          <div>> <a href='index-cf.html'><font size="6">Capital Federal</font></a></div>
+          <div id="link"><font size="10">APOCALIPSIS ZOMBI</font></div>
+          <div id="link"><font size="10">Seleccione un Mapa</font></div>
+          <div id="link">> <a href='index-usa.html'><font size="6">USA</font></a></div>
+          <div id="link">> <a href='index-ar.html'><font size="6">Argentina</font></a></div>
+          <div id="link">> <a href='index-ba.html'><font size="6">Buenos Aires</font></a></div>
+          <div id="link">> <a href='index-cp.html'><font size="6">Conurbano</font></a></div>
+          <div id="link">> <a href='index-cf.html'><font size="6">Capital Federal</font></a></div>
+          <script src="event.js"></script>
         </div>
-        <script src="event.js"></script>
     </body>
 </html>
