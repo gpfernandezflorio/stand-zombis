@@ -1,13 +1,11 @@
 var helptext = "\
-Welcome to Zombietown Buenos Aires, a disease dynamics simulation of zombism across Buenos Aires. \
-We use Gillespie dynamics on block-level census data from 2010 using 308 \
-million people interacting across the continental US.\n\n\
-Parameters:\n\n\
-\u03B1 - kill to bite ratio\n\
-\u03BC - time for zombie to walk 1 mile\n\n\
-Controls:\n\n\
-Click on the map to place a new zombie, and use the controls on the left to \
-change parameters of the simulation. ";
+Parámetros:\n\n\
+\u03B1 - Ratio \"kill to Bite\"\n\
+\u03BC - Tiempo que tarda un zombi en caminar un metro\n\
+t - Tasa de Refresco\n\n\
+Controles:\n\n\
+Hacer click en el mapa para colocar un zombi.\n\nUsar los controles deslizantes para \
+cambiar los parámetros de la simulación.";
 
 var KEY_P = 80;
 var KEY_Q = 81;
@@ -120,6 +118,7 @@ ZombiesUI.prototype = {
         this.set_canvas_size();
 
         this.check_control = new CheckBox("Show controls", 15, 20);
+        this.check_control.hidden = true;
         this.check_control.checked = this.showcontrols;
         this.check_control.handler = this.bind(function() {
             this.showcontrols = !this.showcontrols;
@@ -136,14 +135,14 @@ ZombiesUI.prototype = {
         var button_height = 30;
         var topp = 70;
         var container = new Container(left, topp-30, width, height);
-        this.pauseButton = new Button("Pause (P)", left+width/2 - button_width/2,
+        this.pauseButton = new Button("Pausa (P)", left+width/2 - button_width/2,
                 topp+95, button_width, button_height);
-        this.resetButton = new Button("Reset (Q)", left+width/2 - button_width/2,
+        this.resetButton = new Button("Reiniciar (Q)", left+width/2 - button_width/2,
                 topp+135, button_width, button_height);
 
         this.slider_alpha = new Slider("\u03B1", sleft+50, topp, 90, 0, 3);
         this.slider_mu    = new Slider("\u03BC", sleft+50, topp+25, 90, 1, 100);
-        this.slider_steps = new Slider("step/draw", sleft+50, topp+50, 90, 0, 2000);
+        this.slider_steps = new Slider("t", sleft+20, topp+50, 90, 0, 2000);
 
         this.pauseButton.handler = this.bind(function (){ this.playpause(); });
         this.resetButton.handler = this.bind(function (){ this.reset(); });
@@ -187,7 +186,7 @@ ZombiesUI.prototype = {
     playpause: function(){
         this.play = !this.play;
         if (this.play)
-            this.pauseButton.text = "Pause (P)";
+            this.pauseButton.text = "Pausa (P)";
         else
             this.pauseButton.text = "Play (P)";
     },
@@ -238,7 +237,7 @@ ZombiesUI.prototype = {
         if (sim){
             this.ctx.font = '24px sans-serif';
             this.ctx.fillStyle='rgba(255,255,255,0.8)';
-            var txt = "Time since infection: "+toFixed(this.sim.time*1.0/(this.sim.beta*this.sim.Nfact), 4)+" hours";
+            var txt = "Tiempo desde la infección: "+toFixed(this.sim.time*1.0/(this.sim.beta*this.sim.Nfact), 4)+" horas";
             var size = this.ctx.measureText(txt).width;
             this.ctx.fillText(txt, this.canvas.width - size - 30, this.canvas.height-85);
 
