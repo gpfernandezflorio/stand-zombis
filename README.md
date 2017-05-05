@@ -1,6 +1,10 @@
 Stand Apocalipsis Zombi
 ===
 
+![preview](zombis1.png)
+
+![preview](zombis2.png)
+
 Descripción:
 ---
  * Simulador de propagación de plagas/enfermedades en el espacio utilizando ecuaciones diferenciales.
@@ -11,6 +15,7 @@ Instrucciones para ejecutar el stand:
 ---
  * (opcional) modificar la variable EVENT (en event.js) según el evento actual.
  * Abrir index.html en un navegador web.
+ * Abrir mod.html en un navegador web.
  * Abrir la carpeta "resultados" en un navegador de archivos.
 
 Requiere:
