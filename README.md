@@ -1,15 +1,25 @@
 Stand Apocalipsis Zombi
 ===
 
-![preview](zombis1.png)
+<img src="zombis1.png" width="500"/>
 
-![preview](zombis2.png)
+<img src="zombis2.png" width="500"/>
 
-Descripción:
+Descripción (S1):
+---
+ * Simulador del crecimiento poblacional en el tiempo de dos poblaciones (humanos y zombis) interactuando entre sí.
+ * Al modificar los parámetros se puede ver cómo cambia la curva de crecimiento de cada población.
+ * Software desarrollado en el DC utilizando html y la biblioteca flotr2 de javascript.
+
+Descripción (S2):
 ---
  * Simulador de propagación de plagas/enfermedades en el espacio utilizando ecuaciones diferenciales.
  * Software original desarrollado por Alex Alemi y Matt Bierbaum.
  * Modificado para incluír mapas de Argentina, Buenos Aires, el Conurbano y Capital Federal.
+
+Conceptos necesarios:
+---
+ * ¿Ecuaciones diferenciales?
 
 Instrucciones para ejecutar el stand:
 ---
@@ -18,14 +28,22 @@ Instrucciones para ejecutar el stand:
  * Abrir mod.html en un navegador web.
  * Abrir la carpeta "resultados" en un navegador de archivos.
 
-Requiere:
+Requiere (S1):
+---
+ * Navegador web Chromium (ver si es lo mismo en Chrome) en Ubuntu. En Firefox también anda pero no me gusta el modo fullscreen de Firefox.
+
+Requiere (S2):
 ---
  * Navegador web Firefox en Ubuntu. Chromium no funciona.
+ * No hace falta conexión a internet.
  * Reproductor de video (VLC funciona. El programa por defecto de Ubuntu también, aunque no es tan lindo).
   - Configurarlo para que loopée.
- * No hace falta conexión a internet.
 
-Instrucciones de uso:
+Instrucciones de uso (S1):
+---
+ * Mover los sliders de cada parámetro para ver cómo se modifican las curvas de crecimiento poblacional.
+
+Instrucciones de uso (S2):
 ---
  * Una vez elegido el mapa, hacer click para posicionar un zombi en el espacio. La simulación inicia automáticamente.
  * Los parámetros  y  pueden modificarse arrastrando el slider correspondiente en la pantalla.
@@ -36,8 +54,14 @@ Instrucciones de uso:
 Links:
 ---
  * [Repositorio](https://git.exactas.uba.ar/extension-dc/stand-zombis/)
- * [Repositorio de la versión original](https://github.com/mattbierbaum/zombies-usa/)
- * [Demo online de la versión original](http://mattbierbaum.github.io/zombies-usa/)
+ * [Repositorio de la versión original de S2](https://github.com/mattbierbaum/zombies-usa/)
+ * [Demo online de la versión original de S2](http://mattbierbaum.github.io/zombies-usa/)
+
+Cosas para mejorar:
+---
+ * Ejecutarlo en modo Kiosko (Firefox) o hacer que ande en Chrome.
+ * Conseguir el libro impreso.
+ * Agregar el link al libro en la sección "Links" de este archivo.
 
 Speech:
 ---
@@ -53,22 +77,31 @@ Speech:
 
  La cantidad de humanos que nacen y mueren las podemos aproximar sabiendo la tasa de natalidad y mortalidad de la población. Para conocer la cantidad de humanos que se convierten en zombis y la cantidad de zombis que se convierten en humanos, primero vamos a definir la tasa de interacción, que indica que tan probable es que un zombi y un humano se enfrenten y la tasa de conversión, que indica el resultado del enfrentamiento. Si la tasa de conversión vale 1.0, todo enfrentamiento termina con el humano convertido en zombi. Si vale 0.0, todo enfrentamiento termina en el humano matando al zombi.
 
-Pasamos al simulador unidimensional.
+ Pasamos al simulador unidimensional.
 
-Ver por ejemplo, si no hay interacción, los zombis se mantienen constantes y la curva de los humanos sólo depende de natalidad y mortalidad (esto sirve para simular el crecimiento poblacional real). Al incrementar la interacción, parece inevitable que en algún momento, los zombis ganen (por que la tasa de conversión es 1). Al bajar la tasa de conversión, llega un punto en el que es posible sobrevivir (ej: interacción=0.5 conversión (<) 0.56).
+ Ver por ejemplo, si no hay interacción, los zombis se mantienen constantes y la curva de los humanos sólo depende de natalidad y mortalidad (esto sirve para simular el crecimiento poblacional real). Al incrementar la interacción, parece inevitable que en algún momento, los zombis ganen (por que la tasa de conversión es 1). Al bajar la tasa de conversión, llega un punto en el que es posible sobrevivir (ej: interacción=0.5 conversión (<) 0.56).
 
-Este simulador sirve para el modelo que define el comportamiento con estas escuaciones, pero podrían hacer otros modelos del mismo problema. Por ejemplo, si se modelan distintas propiedades sobre los humanos y los zombis, cambiaría la ecucación que define la cantidad de humanos que se convierten y la cantidad de zombis que los humanos matan. Lo mismo si modelamos las armas con las que los humanos se defienden, etc.
+ Este simulador sirve para el modelo que define el comportamiento con estas escuaciones, pero podrían hacer otros modelos del mismo problema. Por ejemplo, si se modelan distintas propiedades sobre los humanos y los zombis, cambiaría la ecucación que define la cantidad de humanos que se convierten y la cantidad de zombis que los humanos matan. Lo mismo si modelamos las armas con las que los humanos se defienden, etc.
 
-También se pueden agregar variantes al modelo, como la cantidad de zombis que se "curan", en caso de que exista una cura, o la cantidad de humanos que los zombis matan (hasta ahora asumimos que los zombis no pueden matar humanos, sólo convertirlos).
+ También se pueden agregar variantes al modelo, como la cantidad de zombis que se "curan", en caso de que exista una cura, o la cantidad de humanos que los zombis matan (hasta ahora asumimos que los zombis no pueden matar humanos, sólo convertirlos).
 
-Por otro lado, tenemos este otro simulador que en lugar de simular la cantidad de humanos y zombis a través del tiempo, simula la propagación de los zombis por el espacio, a través del tiempo.
+ Por otro lado, tenemos este otro simulador que en lugar de simular la cantidad de humanos y zombis a través del tiempo, simula la propagación de los zombis por el espacio, a través del tiempo.
 
-Pasamos al simulador bidimensional.
+ Pasamos al simulador bidimensional.
 
-En este caso, los parámetros son , que define una tasa "Kill to Bite", es decir, cuantos zombis mueren por cada humano que se convierte y , que define la velocidad con la que se mueven los zombis por el espacio.
+ En este caso, los parámetros son , que define una tasa "Kill to Bite", es decir, cuantos zombis mueren por cada humano que se convierte y , que define la velocidad con la que se mueven los zombis por el espacio.
 
-Ver por ejemplo, que las zonas aisladas nunca se contagian. Al igual que con el simulador unidimensional, una forma de sobrevivir es eliminando la interacción. Otra, es contratacar. Si los humanos no matan zombis (tasa de conversión=1 en el anterior, ratio "Kill to Bite"=0 en este) es inevitable que los zombis ganen, lo cual tiene sentido.
+ Ver por ejemplo, que las zonas aisladas nunca se contagian. Al igual que con el simulador unidimensional, una forma de sobrevivir es eliminando la interacción. Otra, es contratacar. Si los humanos no matan zombis (tasa de conversión=1 en el anterior, ratio "Kill to Bite"=0 en este) es inevitable que los zombis ganen, lo cual tiene sentido.
 
-Así que ahora ya saben qué tienen que hacer ante un apocalipsis zombi: Aislarse, o contratacar.
+ Así que ahora ya saben qué tienen que hacer ante un apocalipsis zombi: Aislarse, o contratacar.
 
-Más allá del tema de los zombis, esto se usa en la vida real para modelar y simular propagación de enfermedades, con un modelo muy similar al visto en el primer caso, sólo que nadie mata a los enfermos!
+ Más allá del tema de los zombis, esto se usa en la vida real para modelar y simular propagación de enfermedades, con un modelo muy similar al visto en el primer caso, sólo que nadie mata a los enfermos!
+
+FAQ:
+---
+  * ¿Esto se usa en la vida real?
+   * Sí.
+ * ¿En serio?
+   * Sí.
+ * ¿En la vida real?
+   * Sí.
