@@ -186,9 +186,9 @@ document.getElementById("turn").innerHTML = val;
       var zi1 = zi + turned_to_zombie - zombie_killed;
 
       if (hi1 > maxval) maxval = hi1;
-      humans.push([i+1,Math.round(hi1)]);
+      humans.push([i+1,hi1]);
       if (zi1 > maxval) maxval = zi1;
-      zombis.push([i+1,Math.round(zi1)]);
+      zombis.push([i+1,zi1]);
     }
 
     if (maxval < 1) maxval = 1;
