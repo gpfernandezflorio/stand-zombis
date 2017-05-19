@@ -15,3 +15,6 @@ Archivos:
   4-0.43.png: ídem con =0.43.
   4-0.43.mp4: Progreso del resultado anterior.
   5-0.47.png: ídem con =0.47.
+
+1800 -> 24 fps
+2800 -> 30 fps
