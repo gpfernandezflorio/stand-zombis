@@ -11,12 +11,12 @@
         position: absolute;
         bottom: 10px;
         right: 20px;
-        color: #000;
+        color: #FFF;
     }
 </style>
 </head>
 
-<body>
+<body style="background: url(bg.jpg) no-repeat;  background-size: cover; background-attachment: fixed;;color:#FFF">
 
 <div id="params">
 
@@ -26,7 +26,7 @@
   <td id="t1" style="text-align:right">Población Inicial de Humanos : </td>
   <td id="c1" style="width:80px"><text id="human">0</text></td>
   <td id="n1">0</td>
-  <td><input id="human_slider" type="range" min="0" max="1000" step="1" oninput="updatehuman(this.value)"/></td>
+  <td><input id="human_slider" type="range" min="0" max="1000" step="1" oninput="update('human',this.value)"/></td>
   <td id="m1">1000</td>
 </tr>
 
@@ -34,7 +34,7 @@
   <td style="text-align:right">Población Inicial de Zombis : </td>
   <td><text id="zombi">0</text></td>
   <td>0</td>
-  <td><input id="zombi_slider" type="range" min="0" max="100" step="1" oninput="updatezombi(this.value)"/></td>
+  <td><input id="zombi_slider" type="range" min="0" max="100" step="1" oninput="update('zombi',this.value)"/></td>
   <td>100</td>
 </tr>
 
@@ -42,7 +42,7 @@
   <td style="text-align:right">Tasa de Natalidad : </td>
   <td><text id="born">0</text></td>
   <td>0.0</td>
-  <td><input id="born_slider" type="range" min="0" max="1" step="0.001" oninput="updateborn(this.value)"/></td>
+  <td><input id="born_slider" type="range" min="0" max="1" step="0.001" oninput="update('born',this.value)"/></td>
   <td>1.0</td>
 </tr>
 
@@ -51,7 +51,7 @@
   <td style="text-align:right">Tasa de Mortalidad : </td>
   <td><text id="dead">0</text></td>
   <td>0.0</td>
-  <td><input id="dead_slider" type="range" min="0" max="1" step="0.001" oninput="updatedead(this.value)"/></td>
+  <td><input id="dead_slider" type="range" min="0" max="1" step="0.001" oninput="update('dead',this.value)"/></td>
   <td>1.0</td>
 </tr>
 
@@ -59,7 +59,7 @@
   <td style="text-align:right">Tasa de Interacción : </td>
   <td><text id="meet">0</text></td>
   <td>0.0</td>
-  <td><input id="meet_slider" type="range" min="0" max="1" step="0.001" oninput="updatemeet(this.value)"/></td>
+  <td><input id="meet_slider" type="range" min="0" max="1" step="0.001" oninput="update('meet',this.value)"/></td>
   <td>1.0</td>
 </tr>
 
@@ -67,7 +67,15 @@
   <td style="text-align:right">Tasa de Conversión : </td>
   <td><text id="turn">0</text></td>
   <td>0.0</td>
-  <td><input id="turn_slider" type="range" min="0" max="1" step="0.001" oninput="updateturn(this.value)"/></td>
+  <td><input id="turn_slider" type="range" min="0" max="1" step="0.001" oninput="update('turn',this.value)"/></td>
+  <td>1.0</td>
+</tr>
+
+<tr>
+  <td style="text-align:right">Tasa de Vacunación : </td>
+  <td><text id="cure">0</text></td>
+  <td>0.0</td>
+  <td><input id="cure_slider" type="range" min="0" max="1" step="0.001" oninput="update('cure',this.value)"/></td>
   <td>1.0</td>
 </tr>
 
@@ -85,7 +93,7 @@
   <td id="t2">Años de Simulación : </td>
   <td id="c2" style="width:40px"><text id="year">0</text></td>
   <td id="n2">1</td>
-  <td><input id="year_slider" type="range" min="1" max="200" step="1" oninput="updateyear(this.value)"/></td>
+  <td><input id="year_slider" type="range" min="1" max="200" step="1" oninput="update('year',this.value)"/></td>
   <td id="m2">200</td>
 </tr>
 
@@ -98,10 +106,11 @@
 <script>
 HUMAN_INIT = 100
 ZOMBI_INIT = 10
-BORN_INIT = 0.17
+BORN_INIT = 0.09
 DEAD_INIT = 0.08
 MEET_INIT = 0.0
 TURN_INIT = 1.0
+CURE_INIT = 0.0
 YEARS_INIT = 50
 H = 30+document.getElementById("event").offsetHeight+document.getElementById("params").offsetHeight
 W1 = 100+document.getElementById("t1").offsetWidth+document.getElementById("n1").offsetWidth+
@@ -109,7 +118,6 @@ W1 = 100+document.getElementById("t1").offsetWidth+document.getElementById("n1")
 W2 = 100+document.getElementById("t2").offsetWidth+document.getElementById("n2").offsetWidth+
   document.getElementById("m2").offsetWidth+document.getElementById("c2").offsetWidth+
   document.getElementById("event").offsetWidth
-document.getElementById("year_slider").value = YEARS_INIT
 document.getElementById("human_slider").value = HUMAN_INIT
 document.getElementById("human").innerHTML = HUMAN_INIT;
 document.getElementById("zombi_slider").value = ZOMBI_INIT
@@ -122,28 +130,12 @@ document.getElementById("meet_slider").value = MEET_INIT
 document.getElementById("meet").innerHTML = MEET_INIT;
 document.getElementById("turn_slider").value = TURN_INIT
 document.getElementById("turn").innerHTML = TURN_INIT;
+document.getElementById("cure_slider").value = CURE_INIT
+document.getElementById("cure").innerHTML = CURE_INIT;
 document.getElementById("year_slider").value = YEARS_INIT
 document.getElementById("year").innerHTML = YEARS_INIT;
-function updateyear(val) {
-document.getElementById("year").innerHTML = val;
-}
-function updatehuman(val) {
-document.getElementById("human").innerHTML = val;
-}
-function updatezombi(val) {
-document.getElementById("zombi").innerHTML = val;
-}
-function updateborn(val) {
-document.getElementById("born").innerHTML = val;
-}
-function updatedead(val) {
-document.getElementById("dead").innerHTML = val;
-}
-function updatemeet(val) {
-document.getElementById("meet").innerHTML = val;
-}
-function updateturn(val) {
-document.getElementById("turn").innerHTML = val;
+function update(what,val) {
+document.getElementById(what).innerHTML = val;
 }
 (function () {
   var
@@ -158,6 +150,7 @@ document.getElementById("turn").innerHTML = val;
     document.getElementById("dead_slider").style="width:"+(window.innerWidth-W1)+"px;"
     document.getElementById("meet_slider").style="width:"+(window.innerWidth-W1)+"px;"
     document.getElementById("turn_slider").style="width:"+(window.innerWidth-W1)+"px;"
+    document.getElementById("cure_slider").style="width:"+(window.innerWidth-W1)+"px;"
     document.getElementById("year_slider").style="width:"+(window.innerWidth-W2)+"px;"
     container.style="overflow:hidden;width:"+(window.innerWidth-80)+"px;height:"+(window.innerHeight-H)+"px;"
     var h0 = document.getElementById("human_slider").value;
@@ -166,6 +159,7 @@ document.getElementById("turn").innerHTML = val;
     var ded = document.getElementById("dead_slider").value;
     var meet = document.getElementById("meet_slider").value;
     var turn = document.getElementById("turn_slider").value;
+    var cure = document.getElementById("cure_slider").value;
     var years = document.getElementById("year_slider").value;
 
     humans = [[0,h0]];
@@ -182,8 +176,8 @@ document.getElementById("turn").innerHTML = val;
       var turned_to_zombie = battle*turn;
       var zombie_killed = battle*(1.0-turn);
 
-      var hi1 = hi + (hi*nat) - (hi*ded) - turned_to_zombie;
-      var zi1 = zi + turned_to_zombie - zombie_killed;
+      var hi1 = hi + (hi*nat) - (hi*ded) - turned_to_zombie + (zi*cure);
+      var zi1 = zi + turned_to_zombie - zombie_killed - (zi*cure);
 
       if (hi1 > maxval) maxval = hi1;
       humans.push([i+1,hi1]);
@@ -195,10 +189,24 @@ document.getElementById("turn").innerHTML = val;
     maxval *=1.05;
 
     // Draw Graph
-    graph = Flotr.draw(container, [ humans, zombis ], {
+    graph = Flotr.draw(container, [ {data:humans, label:"HUMANOS"}, {data:zombis, label:"ZOMBIS"} ], {
+      legend : {
+        position : 'ne',
+        backgroundColor : '#FFFFFF'
+      },
+      grid:{
+        backgroundColor: 'white'
+      },
       yaxis : {
+        title : 'POBLACIÓN',
+        color:'#FFF',
         max : maxval,
         min : 0
+      },
+      xaxis : {
+        title : 'AÑOS TRANSCURRIDOS',
+        labelsAngle: -45,
+        color:'#FFF'
       }
     });
 
