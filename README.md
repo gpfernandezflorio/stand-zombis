@@ -24,8 +24,8 @@ Conceptos necesarios:
 Instrucciones para ejecutar el stand:
 ---
  * (opcional) modificar la variable EVENT (en event.js) según el evento actual.
- * Abrir index.html en un navegador web.
- * Abrir mod.html en un navegador web.
+ * Abrir s1.html en un navegador web.
+ * Abrir s2.html en un navegador web.
  * Abrir la carpeta "resultados" en un navegador de archivos.
 
 Requiere (S1):
