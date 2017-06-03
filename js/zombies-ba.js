@@ -1,6 +1,6 @@
 var helptext = "\
 Parámetros:\n\n\
-\u03B1 - Ratio \"kill to Bite\"\n\
+\u03B1 - Ratio \"Muertes por Mordeduras\"\n\
 \u03BC - Tiempo que tarda un zombi en caminar un metro\n\
 t - Tasa de Refresco\n\n\
 Controles:\n\n\
