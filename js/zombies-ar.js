@@ -237,7 +237,8 @@ ZombiesUI.prototype = {
         if (sim){
             this.ctx.font = '24px sans-serif';
             this.ctx.fillStyle='rgba(255,255,255,0.8)';
-            var txt = "Tiempo desde la infección: "+toFixed(this.sim.time*1.0/(this.sim.beta*this.sim.Nfact), 4)+" horas";
+            //var txt = "Tiempo desde la infección: "+toFixed(this.sim.time*1.0/(this.sim.beta*this.sim.Nfact), 4)+" horas";
+            var txt = "Tiempo desde la infección: "+Math.round(toFixed(this.sim.time*1.0/(this.sim.beta*this.sim.Nfact), 4)/24)+" días";
             var size = this.ctx.measureText(txt).width;
             this.ctx.fillText(txt, this.canvas.width/2 - size/2, this.canvas.height-15);
 
